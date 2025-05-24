@@ -1,10 +1,16 @@
 # Sandhill Road
 
+[![npm version](https://img.shields.io/npm/v/sandhill-road.svg)](https://www.npmjs.com/package/sandhill-road)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
+
 A narrative-driven startup simulation game where you guide a founder from garage to exit, making high-stakes decisions across a branching storyline.
 
 ## Description
 
-Sandhill Road is a text-based survival strategy game inspired by Oregon Trail. You'll manage resources, make critical decisions, and try to navigate the challenges of startup life. Each decision you make simulates one in-game week, affecting your startup's momentum, resources, and progress.
+Sandhill Road is a text-based survival strategy game inspired by Oregon Trail, but set in the high-stakes world of startups. You'll manage resources, make critical decisions, and try to navigate the challenges of startup life. Each decision you make simulates one in-game week, affecting your startup's momentum, resources, and progress.
+
+![Sandhill Road Screenshot](https://raw.githubusercontent.com/yourusername/sandhill-road/main/assets/screenshot.png)
 
 ## Features
 
@@ -14,31 +20,30 @@ Sandhill Road is a text-based survival strategy game inspired by Oregon Trail. Y
 - Stat-based decision outcomes
 - Multiple game stages: Garage, Demo Day, Fundraising, PMF, Scaling, Crisis, Exit
 - Save/load game progress
+- 20+ unique narrative events
 
-## Getting Started
+## Installation
 
-### Prerequisites
+### Global Installation (Recommended)
 
-- Node.js (v16+)
-- npm or yarn
+```bash
+npm install -g sandhill-road
+```
 
-### Installation
+Then run the game from anywhere:
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/yourusername/sandhill-road.git
-   cd sandhill-road
-   ```
+```bash
+sandhill-road
+```
 
-2. Install dependencies:
-   ```
-   npm install
-   ```
+### Local Installation
 
-3. Start the game:
-   ```
-   npm start
-   ```
+```bash
+git clone https://github.com/yourusername/sandhill-road.git
+cd sandhill-road
+npm install
+npm start
+```
 
 ## How to Play
 
@@ -56,14 +61,15 @@ Sandhill Road is a text-based survival strategy game inspired by Oregon Trail. Y
 4. **PMF** - Iterating on your product to find product-market fit
 5. **Scaling** - Growing your product and team
 6. **Crisis** - Facing a major challenge that threatens your company
-7. **Exit** - Exploring exit opportunities
+7. **Exit** - Exploring exit opportunities for your startup
 
 ## Adding New Events
 
 The game is designed to be easily extensible. To add new events:
 
-1. Open `src/data/events.json`
-2. Add a new event object following this structure:
+1. Fork the repository
+2. Open `src/data/events.json`
+3. Add a new event object following this structure:
 
 ```json
 {
@@ -86,48 +92,50 @@ The game is designed to be easily extensible. To add new events:
 }
 ```
 
-Fields explained:
-- `id`: Unique identifier for the event
-- `title`: Title displayed to the player
-- `description`: The event's description
-- `choices`: Array of possible choices
-  - `id`: Unique identifier for the choice
-  - `text`: The text displayed to the player
-  - `requires` (optional): Stats required to select this choice
-  - `result`: Changes to stats when this choice is selected
-  - `resultText`: The outcome text displayed to the player
-  - `nextEvent` (optional): ID of the next event to trigger
-- `stage`: Game stage when this event can occur
-- `weight`: Relative probability of this event occurring
-- `repeatable` (optional): Whether this event can repeat
+4. Submit a pull request
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for more details.
 
 ## Development
 
 ### Build the project
 
-```
+```bash
 npm run build
 ```
 
 ### Running in development mode
 
-```
+```bash
 npm run dev
 ```
 
-## Future Enhancements
+### Release Process
 
-- Web-based GUI version
-- More narrative events
-- Expanded game mechanics
-- Multiplayer mode (compete with friends)
-- Mobile support
+```bash
+npm run release
+```
+
+## Contributing
+
+Contributions are welcome! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on the process for submitting pull requests.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/yourusername/sandhill-road/tags).
+
+## Authors
+
+* **Your Name** - *Initial work* - [yourusername](https://github.com/yourusername)
+
+See also the list of [contributors](https://github.com/yourusername/sandhill-road/contributors) who participated in this project.
 
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
 - Inspired by Oregon Trail and startup life
+- Built with Node.js, TypeScript, and Inquirer 
 - Built with Node.js, TypeScript, and Inquirer 
