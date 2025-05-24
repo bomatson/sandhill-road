@@ -192,6 +192,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- Inspired by Oregon Trail and startup life
-- Built with Node.js, TypeScript, and Inquirer 
+- Inspired by Oregon Trail and the incredible adventures of Nick Julian and Bobby
 - Built with Node.js, TypeScript, and Inquirer 
