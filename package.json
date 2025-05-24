@@ -1,0 +1,56 @@
+{
+  "name": "sandhill-road",
+  "version": "1.0.0",
+  "description": "A narrative-driven startup simulation game",
+  "main": "dist/index.js",
+  "bin": {
+    "sandhill-road": "./index.js"
+  },
+  "scripts": {
+    "start": "ts-node src/cli/index.ts",
+    "build": "tsc",
+    "dev": "ts-node-dev --respawn src/cli/index.ts",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "game",
+    "simulation",
+    "startup",
+    "narrative",
+    "cli"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/figlet": "^1.7.0",
+    "@types/inquirer": "^9.0.8",
+    "@types/node": "^20.11.0",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "figlet": "^1.7.0",
+    "inquirer": "^8.2.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/sandhill-road.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/sandhill-road/issues"
+  },
+  "homepage": "https://github.com/yourusername/sandhill-road#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "dist",
+    "src",
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ]
+}

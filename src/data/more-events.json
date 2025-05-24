@@ -1,0 +1,514 @@
+[
+  {
+    "id": "E011",
+    "title": "Product Market Fit",
+    "description": "You've been iterating on your product for months. Your latest version seems to be gaining traction.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Focus on optimizing conversion",
+        "result": {
+          "companyStats.users": 300,
+          "companyStats.revenue": 2000,
+          "founderStats.morale": 2
+        },
+        "resultText": "You optimize your onboarding funnel and see a significant increase in conversion rates. Your user base grows steadily."
+      },
+      {
+        "id": "C002",
+        "text": "Add more features",
+        "result": {
+          "companyStats.productProgress": 15,
+          "companyStats.users": 100,
+          "founderStats.tech": 1
+        },
+        "resultText": "You build out new features that some power users love, but the overall growth is modest. The product becomes more complex."
+      },
+      {
+        "id": "C003",
+        "text": "Invest in user research",
+        "requires": {
+          "companyStats.companyCash": 50000
+        },
+        "result": {
+          "companyStats.users": 500,
+          "companyStats.revenue": 5000,
+          "companyStats.companyCash": -20000,
+          "founderStats.morale": 3
+        },
+        "resultText": "The research reveals critical insights about your users. You make targeted changes that dramatically improve adoption and retention."
+      }
+    ],
+    "stage": "PMF",
+    "weight": 3
+  },
+  {
+    "id": "E012",
+    "title": "Pricing Strategy",
+    "description": "Your product has proven value, but you're not sure how to price it. The decision could significantly impact your growth and revenue.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Freemium model",
+        "result": {
+          "companyStats.users": 1000,
+          "companyStats.revenue": 3000,
+          "founderStats.stamina": -1
+        },
+        "resultText": "Your user base grows rapidly, but only a small percentage converts to paid. You have a lot of users but modest revenue."
+      },
+      {
+        "id": "C002",
+        "text": "Premium pricing",
+        "result": {
+          "companyStats.users": 200,
+          "companyStats.revenue": 10000,
+          "founderStats.morale": 1
+        },
+        "resultText": "You attract fewer but higher-quality customers. Your revenue per user is excellent, though growth is slower."
+      },
+      {
+        "id": "C003",
+        "text": "Tiered pricing strategy",
+        "requires": {
+          "founderStats.hustle": 7
+        },
+        "result": {
+          "companyStats.users": 600,
+          "companyStats.revenue": 15000,
+          "founderStats.stamina": -2,
+          "founderStats.hustle": 1
+        },
+        "resultText": "You create multiple price points for different customer segments. It's more complex to manage, but provides the best balance of growth and revenue."
+      }
+    ],
+    "stage": "PMF",
+    "weight": 2
+  },
+  {
+    "id": "E013",
+    "title": "Key Employee Departure",
+    "description": "Your first engineering hire, who knows the codebase better than anyone, has received an offer from a FAANG company.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Counter with more equity",
+        "result": {
+          "founderStats.morale": -1,
+          "companyStats.productProgress": 5
+        },
+        "resultText": "They accept your offer and stay, but it creates some tension with other employees who learn about the special treatment."
+      },
+      {
+        "id": "C002",
+        "text": "Let them go gracefully",
+        "result": {
+          "companyStats.productProgress": -10,
+          "founderStats.morale": -2,
+          "founderStats.tech": 1
+        },
+        "resultText": "You wish them well and organize a proper knowledge transfer. Development slows down, but you gain deeper technical understanding yourself."
+      },
+      {
+        "id": "C003",
+        "text": "Counter with flexible work arrangement",
+        "requires": {
+          "founderStats.hustle": 6
+        },
+        "result": {
+          "founderStats.morale": 1,
+          "companyStats.burnRate": -500
+        },
+        "resultText": "You offer remote work and flexible hours. They stay, and you establish a new company policy that improves overall team satisfaction while reducing office costs."
+      }
+    ],
+    "stage": "PMF",
+    "weight": 1
+  },
+  {
+    "id": "E014",
+    "title": "Scaling Challenges",
+    "description": "Your user base is growing rapidly, and your infrastructure is struggling to keep up.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Hire a DevOps specialist",
+        "result": {
+          "companyStats.burnRate": 2000,
+          "companyStats.productProgress": 10,
+          "companyStats.users": 300
+        },
+        "resultText": "The new hire rebuilds your infrastructure with scalability in mind. Your system now handles traffic spikes smoothly."
+      },
+      {
+        "id": "C002",
+        "text": "Move to a managed cloud solution",
+        "result": {
+          "companyStats.burnRate": 1500,
+          "companyStats.productProgress": 5,
+          "companyStats.users": 200
+        },
+        "resultText": "You pay more for hosting, but gain reliability without hiring specialist staff. It's a good middle ground solution."
+      },
+      {
+        "id": "C003",
+        "text": "Rewrite critical components",
+        "requires": {
+          "founderStats.tech": 8
+        },
+        "result": {
+          "companyStats.productProgress": 20,
+          "companyStats.users": 500,
+          "founderStats.tech": 2,
+          "founderStats.stamina": -3,
+          "weeksLost": 2
+        },
+        "resultText": "You personally lead a rewrite of the bottleneck components. It takes time and energy, but the result is a highly optimized system that can handle 10x the load."
+      }
+    ],
+    "stage": "Scaling",
+    "weight": 3
+  },
+  {
+    "id": "E015",
+    "title": "Marketing Channel Breakthrough",
+    "description": "After experimenting with various marketing channels, one seems to be performing exceptionally well.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Double down on the successful channel",
+        "result": {
+          "companyStats.companyCash": -50000,
+          "companyStats.users": 1000,
+          "companyStats.revenue": 10000
+        },
+        "resultText": "You increase spending on the successful channel and see proportional growth in users and revenue."
+      },
+      {
+        "id": "C002",
+        "text": "Maintain and diversify",
+        "result": {
+          "companyStats.companyCash": -30000,
+          "companyStats.users": 600,
+          "companyStats.revenue": 6000
+        },
+        "resultText": "You maintain the successful channel while testing others. Growth is steady, and you reduce the risk of depending on a single acquisition source."
+      },
+      {
+        "id": "C003",
+        "text": "Hire a growth specialist",
+        "result": {
+          "companyStats.burnRate": 3000,
+          "companyStats.users": 800,
+          "companyStats.revenue": 8000,
+          "founderStats.stamina": 1
+        },
+        "resultText": "The specialist optimizes your marketing efforts and takes over campaign management, freeing up your time while delivering strong results."
+      }
+    ],
+    "stage": "Scaling",
+    "weight": 2
+  },
+  {
+    "id": "E016",
+    "title": "Competitor Response",
+    "description": "A well-funded competitor has noticed your success and launched a similar product with aggressive pricing.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Match their pricing",
+        "result": {
+          "companyStats.revenue": -5000,
+          "companyStats.users": 200,
+          "founderStats.morale": -1
+        },
+        "resultText": "You maintain market share but at the cost of your margins. The price war hurts your bottom line."
+      },
+      {
+        "id": "C002",
+        "text": "Focus on differentiation",
+        "result": {
+          "companyStats.productProgress": 15,
+          "companyStats.users": 300,
+          "founderStats.stamina": -2
+        },
+        "resultText": "You accelerate your roadmap to build features they don't have. Users appreciate the unique value, though it requires intense work."
+      },
+      {
+        "id": "C003",
+        "text": "Reach out to discuss acquisition",
+        "requires": {
+          "companyStats.revenue": 10000
+        },
+        "result": {
+          "companyStats.companyCash": 2000000,
+          "founderStats.morale": 5
+        },
+        "resultText": "To your surprise, they're interested in acquiring your company! After due diligence, they offer $2M for your technology and team.",
+        "nextEvent": "E030"
+      }
+    ],
+    "stage": "Scaling",
+    "weight": 2
+  },
+  {
+    "id": "E017",
+    "title": "Cash Flow Crisis",
+    "description": "Despite growing users, your burn rate has outpaced revenue growth. You have only 2 months of runway left.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Emergency fundraising round",
+        "result": {
+          "companyStats.companyCash": 500000,
+          "founderStats.morale": -2
+        },
+        "resultText": "You secure funding, but at a down-round valuation that dilutes your ownership significantly."
+      },
+      {
+        "id": "C002",
+        "text": "Drastic cost-cutting",
+        "result": {
+          "companyStats.burnRate": -5000,
+          "companyStats.productProgress": -10,
+          "founderStats.morale": -3,
+          "companyStats.users": -200
+        },
+        "resultText": "You lay off 30% of the team and cut all non-essential expenses. Morale plummets but your runway extends to 8 months."
+      },
+      {
+        "id": "C003",
+        "text": "Pivot to a more profitable model",
+        "requires": {
+          "founderStats.hustle": 8
+        },
+        "result": {
+          "companyStats.revenue": 20000,
+          "companyStats.users": -500,
+          "companyStats.productProgress": -5,
+          "founderStats.stamina": -3
+        },
+        "resultText": "You make the difficult decision to pivot toward enterprise customers. You lose many small customers but gain a few high-value contracts that solve your cash problems."
+      }
+    ],
+    "stage": "Crisis",
+    "weight": 3
+  },
+  {
+    "id": "E018",
+    "title": "Security Breach",
+    "description": "Your security team has discovered a major data breach. Customer data has been exposed for up to 72 hours.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Immediate disclosure and apology",
+        "result": {
+          "companyStats.users": -400,
+          "founderStats.morale": -2,
+          "companyStats.revenue": -4000,
+          "founderStats.hustle": 1
+        },
+        "resultText": "You face backlash and lose customers, but your transparency earns respect from industry observers and remaining users."
+      },
+      {
+        "id": "C002",
+        "text": "Downplay the incident while fixing it",
+        "result": {
+          "companyStats.users": -200,
+          "founderStats.morale": -1,
+          "companyStats.revenue": -2000
+        },
+        "resultText": "The short-term impact is lessened, but tech journalists eventually uncover the full extent. Your reputation takes a lasting hit."
+      },
+      {
+        "id": "C003",
+        "text": "Hire a crisis management firm",
+        "requires": {
+          "companyStats.companyCash": 100000
+        },
+        "result": {
+          "companyStats.companyCash": -100000,
+          "companyStats.users": -100,
+          "companyStats.revenue": -1000
+        },
+        "resultText": "The professionals guide you through disclosure, remediation, and communication. The expense is significant, but damage is minimized."
+      }
+    ],
+    "stage": "Crisis",
+    "weight": 2
+  },
+  {
+    "id": "E019",
+    "title": "Co-founder Conflict",
+    "description": "A fundamental disagreement about the company's direction has created a rift between you and your co-founder.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Buy out their shares",
+        "requires": {
+          "companyStats.companyCash": 500000
+        },
+        "result": {
+          "companyStats.companyCash": -500000,
+          "founderStats.morale": 2,
+          "founderStats.stamina": -2
+        },
+        "resultText": "You negotiate a buyout that strains your cash reserves but gives you full control. The team is relieved that the conflict is over."
+      },
+      {
+        "id": "C002",
+        "text": "Bring in a mediator",
+        "result": {
+          "companyStats.companyCash": -20000,
+          "founderStats.morale": 1
+        },
+        "resultText": "A professional mediator helps you find common ground. The relationship remains tense but workable, and the company can move forward."
+      },
+      {
+        "id": "C003",
+        "text": "Propose a structured split of responsibilities",
+        "requires": {
+          "founderStats.hustle": 7
+        },
+        "result": {
+          "founderStats.morale": 3,
+          "companyStats.productProgress": 10,
+          "founderStats.stamina": 2
+        },
+        "resultText": "Your thoughtful proposal gives each founder control over different aspects of the business. With clear boundaries, your complementary strengths begin to shine again."
+      }
+    ],
+    "stage": "Crisis",
+    "weight": 2
+  },
+  {
+    "id": "E020",
+    "title": "Acquisition Offer",
+    "description": "A major player in your industry has approached you with an acquisition offer of $20M.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Accept the offer",
+        "result": {
+          "companyStats.companyCash": 20000000,
+          "founderStats.morale": 5,
+          "founderStats.health": 3
+        },
+        "resultText": "You accept the offer and successfully exit your startup. Your team is excited about joining the larger company, and you secure a good outcome for your investors.",
+        "nextEvent": "E030"
+      },
+      {
+        "id": "C002",
+        "text": "Counter with higher valuation",
+        "requires": {
+          "companyStats.revenue": 30000
+        },
+        "result": {
+          "companyStats.companyCash": 30000000,
+          "founderStats.morale": 5,
+          "founderStats.health": 3,
+          "founderStats.hustle": 2
+        },
+        "resultText": "You make a compelling case based on your growth and revenue. After negotiations, they increase their offer to $30M. Your investors are thrilled with the outcome.",
+        "nextEvent": "E030"
+      },
+      {
+        "id": "C003",
+        "text": "Decline and continue building",
+        "result": {
+          "founderStats.morale": 1,
+          "companyStats.productProgress": 10,
+          "founderStats.stamina": -1
+        },
+        "resultText": "You believe your company has greater potential. The team is energized by your confidence in the mission, though some are disappointed about missing the exit opportunity."
+      }
+    ],
+    "stage": "Exit",
+    "weight": 3
+  },
+  {
+    "id": "E021",
+    "title": "IPO Opportunity",
+    "description": "Your company has reached a scale where an IPO is feasible. Investment bankers are eager to take you public.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Pursue the IPO",
+        "requires": {
+          "companyStats.revenue": 100000
+        },
+        "result": {
+          "companyStats.companyCash": 100000000,
+          "founderStats.morale": 5,
+          "founderStats.health": -2,
+          "founderStats.stamina": -5
+        },
+        "resultText": "After months of intense preparation, your company goes public at a $500M valuation. The IPO is successful, though the process was exhausting.",
+        "nextEvent": "E030"
+      },
+      {
+        "id": "C002",
+        "text": "Seek private funding instead",
+        "result": {
+          "companyStats.companyCash": 20000000,
+          "founderStats.morale": 2
+        },
+        "resultText": "You raise a large private round at a $200M valuation, maintaining more control and avoiding public market scrutiny. Your investors are satisfied with the growth prospects."
+      },
+      {
+        "id": "C003",
+        "text": "Explore dual-track process",
+        "requires": {
+          "founderStats.hustle": 9,
+          "companyStats.revenue": 50000
+        },
+        "result": {
+          "companyStats.companyCash": 150000000,
+          "founderStats.morale": 5,
+          "founderStats.stamina": -4,
+          "founderStats.hustle": 2
+        },
+        "resultText": "You pursue both IPO preparations and acquisition talks simultaneously. The competition drives up your valuation, resulting in a $700M acquisition by a strategic buyer.",
+        "nextEvent": "E030"
+      }
+    ],
+    "stage": "Exit",
+    "weight": 2
+  },
+  {
+    "id": "E030",
+    "title": "Your Startup Journey Ends",
+    "description": "You've successfully exited your startup. Looking back at the journey, what will you do with your new freedom and wealth?",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Become an angel investor",
+        "result": {
+          "founderStats.morale": 3
+        },
+        "resultText": "You decide to give back to the startup ecosystem, investing in and mentoring promising founders. Your experience makes you a valuable advisor to new entrepreneurs."
+      },
+      {
+        "id": "C002",
+        "text": "Take a year off",
+        "result": {
+          "founderStats.health": 5,
+          "founderStats.stamina": 10
+        },
+        "resultText": "After years of intense work, you take time to travel, reconnect with family and friends, and recover from burnout. It's a well-deserved break."
+      },
+      {
+        "id": "C003",
+        "text": "Start a new company",
+        "result": {
+          "founderStats.morale": 5,
+          "founderStats.hustle": 2
+        },
+        "resultText": "The entrepreneurial bug hasn't left you. With lessons learned from your first success, you're ready to build something even bigger this time."
+      }
+    ],
+    "stage": "Exit",
+    "weight": 0,
+    "repeatable": false
+  }
+] 
