@@ -114,9 +114,65 @@ npm run dev
 
 ### Release Process
 
+We follow semantic versioning (SemVer) for releases. Here's the complete workflow for publishing new versions:
+
+#### Automated Release (Recommended)
+
+For most releases, use npm's built-in version commands:
+
 ```bash
-npm run release
+# For bug fixes (1.0.1 → 1.0.2)
+npm version patch
+git push origin main --tags
+npm publish
+
+# For new features (1.0.1 → 1.1.0)
+npm version minor
+git push origin main --tags
+npm publish
+
+# For breaking changes (1.0.1 → 2.0.0)
+npm version major
+git push origin main --tags
+npm publish
 ```
+
+#### Manual Release Process
+
+If you need more control over the release:
+
+```bash
+# 1. Update version in package.json manually
+# 2. Commit the version change
+git add package.json
+git commit -m "v1.0.2: Description of changes"
+
+# 3. Create and push git tag
+git tag v1.0.2
+git push origin main --tags
+
+# 4. Build and publish to npm
+npm run build
+npm publish
+```
+
+#### Important Notes
+
+- **Always include assets**: The `package.json` files array includes the `assets` folder to ensure screenshots and images are included in npm packages
+- **Test before publishing**: Run `npm run build` and test locally before publishing
+- **Follow commit conventions**: Use descriptive commit messages for version bumps
+- **Check npm package**: After publishing, verify the package includes all necessary files
+
+#### Release Checklist
+
+- [ ] Update version in `package.json`
+- [ ] Update `CHANGELOG.md` if applicable
+- [ ] Commit version changes
+- [ ] Create git tag
+- [ ] Push to GitHub with tags
+- [ ] Build the project (`npm run build`)
+- [ ] Publish to npm (`npm publish`)
+- [ ] Verify the published package contains all files
 
 ## Contributing
 
