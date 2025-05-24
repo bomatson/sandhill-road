@@ -12,8 +12,6 @@ A narrative-driven startup simulation game where you guide a founder from garage
 
 Sandhill Road is a text-based survival strategy game inspired by Oregon Trail, but set in the high-stakes world of startups. You'll manage resources, make critical decisions, and try to navigate the challenges of startup life. Each decision you make simulates one in-game week, affecting your startup's momentum, resources, and progress.
 
-![Sandhill Road Screenshot](https://raw.githubusercontent.com/bomatson/sandhill-road/main/assets/screenshot.png)
-
 ## Features
 
 - Text-based adventure with ASCII graphics
