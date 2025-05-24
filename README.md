@@ -4,13 +4,15 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 
+![Sandhill Road Title Screen](https://raw.githubusercontent.com/bomatson/sandhill-road/main/assets/title-screen.png)
+
 A narrative-driven startup simulation game where you guide a founder from garage to exit, making high-stakes decisions across a branching storyline.
 
 ## Description
 
 Sandhill Road is a text-based survival strategy game inspired by Oregon Trail, but set in the high-stakes world of startups. You'll manage resources, make critical decisions, and try to navigate the challenges of startup life. Each decision you make simulates one in-game week, affecting your startup's momentum, resources, and progress.
 
-![Sandhill Road Screenshot](https://raw.githubusercontent.com/yourusername/sandhill-road/main/assets/screenshot.png)
+![Sandhill Road Screenshot](https://raw.githubusercontent.com/bomatson/sandhill-road/main/assets/screenshot.png)
 
 ## Features
 
