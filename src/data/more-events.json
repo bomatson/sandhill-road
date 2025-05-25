@@ -476,39 +476,641 @@
     "weight": 2
   },
   {
-    "id": "E030",
-    "title": "Your Startup Journey Ends",
-    "description": "You've successfully exited your startup. Looking back at the journey, what will you do with your new freedom and wealth?",
+    "id": "E022",
+    "title": "Coffee Shop Networking",
+    "description": "While working at a coffee shop, you overhear entrepreneurs discussing their startups. One might be a potential collaborator.",
     "choices": [
       {
         "id": "C001",
-        "text": "Become an angel investor",
+        "text": "Introduce yourself",
         "result": {
-          "founderStats.morale": 3
+          "founderStats.morale": 1,
+          "founderStats.hustle": 1,
+          "companyStats.companyCash": 5000
         },
-        "resultText": "You decide to give back to the startup ecosystem, investing in and mentoring promising founders. Your experience makes you a valuable advisor to new entrepreneurs."
+        "resultText": "The conversation leads to them investing a small amount in your startup. Sometimes serendipity pays off!"
       },
       {
         "id": "C002",
-        "text": "Take a year off",
+        "text": "Listen quietly and learn",
         "result": {
-          "founderStats.health": 5,
-          "founderStats.stamina": 10
+          "founderStats.tech": 1,
+          "companyStats.productProgress": 3
         },
-        "resultText": "After years of intense work, you take time to travel, reconnect with family and friends, and recover from burnout. It's a well-deserved break."
+        "resultText": "You pick up valuable insights about product development and avoid common pitfalls they discuss."
+      }
+    ],
+    "stage": "Garage",
+    "weight": 2
+  },
+  {
+    "id": "E023",
+    "title": "Side Hustle Opportunity", 
+    "description": "A friend offers you freelance work that could bring in $5,000, but it would take time away from your startup.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Take the freelance work",
+        "result": {
+          "founderStats.personalCash": 5000,
+          "founderStats.stamina": -2,
+          "companyStats.productProgress": -5,
+          "weeksLost": 2
+        },
+        "resultText": "The money helps with personal expenses, but you lose momentum on your startup development."
+      },
+      {
+        "id": "C002", 
+        "text": "Stay focused on your startup",
+        "result": {
+          "founderStats.morale": 1,
+          "companyStats.productProgress": 8
+        },
+        "resultText": "You maintain focus and make significant progress on your core product features."
+      }
+    ],
+    "stage": "Garage",
+    "weight": 2
+  },
+  {
+    "id": "E024",
+    "title": "Demo Day Dress Rehearsal",
+    "description": "Other founders suggest doing a practice pitch session before the real demo day. It could help, but costs time.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Join the practice session",
+        "result": {
+          "founderStats.stamina": -1,
+          "founderStats.morale": 2,
+          "companyStats.investorTrust": 2
+        },
+        "resultText": "The practice session reveals weak spots in your pitch. You fix them and deliver much better at demo day."
+      },
+      {
+        "id": "C002",
+        "text": "Practice alone instead",
+        "result": {
+          "founderStats.morale": -1,
+          "companyStats.investorTrust": 1
+        },
+        "resultText": "Solo practice helps, but you miss the valuable feedback that other founders could have provided."
+      }
+    ],
+    "stage": "Demo Day",
+    "weight": 2
+  },
+  {
+    "id": "E025",
+    "title": "Media Coverage Opportunity",
+    "description": "A tech blogger wants to write about your startup after demo day. Great exposure, but they ask tough questions.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Do the interview",
+        "result": {
+          "founderStats.stamina": -1,
+          "companyStats.users": 100,
+          "companyStats.investorTrust": 1
+        },
+        "resultText": "The article brings new users and catches investor attention. The tough questions actually make you seem more credible."
+      },
+      {
+        "id": "C002",
+        "text": "Decline to stay stealth",
+        "result": {
+          "founderStats.morale": -1,
+          "companyStats.productProgress": 3
+        },
+        "resultText": "You avoid potential scrutiny but miss valuable exposure. You focus on building instead."
+      }
+    ],
+    "stage": "Demo Day",
+    "weight": 2
+  },
+  {
+    "id": "E026",
+    "title": "Investor Follow-up Strategy",
+    "description": "After demo day, you have 5 investor emails to respond to. You need to prioritize your approach.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Respond to all immediately",
+        "result": {
+          "founderStats.stamina": -3,
+          "companyStats.investorTrust": 2,
+          "companyStats.companyCash": 150000
+        },
+        "resultText": "Your quick response impresses investors. One writes a check immediately for seed funding."
+      },
+      {
+        "id": "C002",
+        "text": "Research each investor first",
+        "result": {
+          "founderStats.stamina": -2,
+          "companyStats.investorTrust": 3,
+          "companyStats.companyCash": 200000
+        },
+        "resultText": "Tailored responses based on their portfolios lead to better conversations and higher valuations."
+      }
+    ],
+    "stage": "Demo Day",
+    "weight": 1
+  },
+  {
+    "id": "E027",
+    "title": "Seed Round Term Sheet",
+    "description": "Your first real term sheet arrives! $500K at a $3M valuation, but with investor protection clauses.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Accept the terms",
+        "result": {
+          "companyStats.companyCash": 500000,
+          "companyStats.runway": 100,
+          "companyFlags.hasRaisedSeed": true,
+          "founderStats.morale": 3
+        },
+        "resultText": "You're officially funded! The protection clauses sting, but you have runway to prove yourself."
+      },
+      {
+        "id": "C002",
+        "text": "Negotiate better terms",
+        "requires": {
+          "founderStats.hustle": 7
+        },
+        "result": {
+          "founderStats.stamina": -2,
+          "companyStats.companyCash": 650000,
+          "companyStats.runway": 130,
+          "companyFlags.hasRaisedSeed": true
+        },
+        "resultText": "Your negotiation skills pay off! Better valuation and fewer protective provisions."
       },
       {
         "id": "C003",
-        "text": "Start a new company",
+        "text": "Shop for competing offers",
         "result": {
-          "founderStats.morale": 5,
-          "founderStats.hustle": 2
+          "founderStats.stamina": -4,
+          "companyStats.investorTrust": -1,
+          "weeksLost": 3
         },
-        "resultText": "The entrepreneurial bug hasn't left you. With lessons learned from your first success, you're ready to build something even bigger this time."
+        "resultText": "You create a bidding war but exhaust yourself and annoy the original investor. Mixed results."
+      }
+    ],
+    "requirements": {
+      "companyFlags.hasRaisedSeed": false
+    },
+    "stage": "Fundraising",
+    "weight": 3,
+    "repeatable": false
+  },
+  {
+    "id": "E028",
+    "title": "Accelerator Demo Day Prep",
+    "description": "If you're in an accelerator, demo day is approaching. The pressure is intense and everyone's competing for attention.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Focus on metrics and traction",
+        "result": {
+          "founderStats.stamina": -2,
+          "companyStats.investorTrust": 3,
+          "companyStats.companyCash": 300000
+        },
+        "resultText": "Investors love your data-driven approach. Your metrics tell a compelling growth story."
+      },
+      {
+        "id": "C002",
+        "text": "Craft an emotional narrative",
+        "requires": {
+          "founderStats.hustle": 6
+        },
+        "result": {
+          "founderStats.morale": 2,
+          "companyStats.investorTrust": 2,
+          "companyStats.companyCash": 250000
+        },
+        "resultText": "Your story resonates emotionally. Investors remember you even if your metrics aren't the strongest."
+      }
+    ],
+    "requirements": {
+      "companyFlags.inAccelerator": true
+    },
+    "stage": "Fundraising",
+    "weight": 2
+  },
+  {
+    "id": "E029",
+    "title": "First Paying Customer",
+    "description": "Someone wants to pay for your product! It's not much ($500/month), but it validates your concept.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Celebrate and tell everyone",
+        "result": {
+          "founderStats.morale": 3,
+          "companyStats.revenue": 500,
+          "companyStats.users": 50
+        },
+        "resultText": "Your excitement is infectious! The news spreads and brings more early customers."
+      },
+      {
+        "id": "C002",
+        "text": "Stay quiet and keep building",
+        "result": {
+          "founderStats.morale": 1,
+          "companyStats.revenue": 500,
+          "companyStats.productProgress": 5
+        },
+        "resultText": "You use the validation to focus on product improvements rather than marketing."
+      }
+    ],
+    "stage": "PMF",
+    "weight": 3
+  },
+  {
+    "id": "E030",
+    "title": "User Feedback Loop",
+    "description": "Early users are giving mixed feedback. Some love it, others find it confusing. How do you respond?",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Focus on the happy users",
+        "result": {
+          "companyStats.users": 200,
+          "companyStats.revenue": 2000,
+          "companyFlags.hasPMF": true
+        },
+        "resultText": "Doubling down on what works leads to strong word-of-mouth growth from satisfied customers."
+      },
+      {
+        "id": "C002",
+        "text": "Fix issues for confused users",
+        "result": {
+          "founderStats.stamina": -2,
+          "companyStats.productProgress": 8,
+          "companyStats.users": 150
+        },
+        "resultText": "Improving usability broadens your market appeal, though growth is slower initially."
+      }
+    ],
+    "stage": "PMF",
+    "weight": 2
+  },
+  {
+    "id": "E031",
+    "title": "Pricing Experiment",
+    "description": "You need to test different pricing models. Your current price might be too low or too high.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Double your prices",
+        "result": {
+          "companyStats.revenue": 4000,
+          "companyStats.users": -50,
+          "founderStats.morale": 1
+        },
+        "resultText": "Higher prices filter out casual users but dramatically increase revenue per customer."
+      },
+      {
+        "id": "C002",
+        "text": "Add premium tiers",
+        "requires": {
+          "founderStats.tech": 6
+        },
+        "result": {
+          "founderStats.stamina": -2,
+          "companyStats.revenue": 3000,
+          "companyStats.productProgress": 5
+        },
+        "resultText": "Tiered pricing captures more value from power users while keeping basic plans accessible."
+      }
+    ],
+    "stage": "PMF",
+    "weight": 2
+  },
+  {
+    "id": "E032",
+    "title": "Team Building Decision",
+    "description": "You need help but can't afford senior talent. Should you hire junior developers or find co-founders?",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Hire junior developers",
+        "result": {
+          "companyStats.burnRate": 6000,
+          "companyStats.productProgress": 5,
+          "founderStats.stamina": -1
+        },
+        "resultText": "Junior developers are affordable but need training. Progress is slower but costs are manageable."
+      },
+      {
+        "id": "C002",
+        "text": "Find a co-founder",
+        "requires": {
+          "founderStats.hustle": 6
+        },
+        "result": {
+          "founderStats.tech": 2,
+          "companyStats.productProgress": 10,
+          "companyFlags.hasCoFounder": true,
+          "companyFlags.coFounderEquity": 20
+        },
+        "resultText": "A new co-founder brings expertise and shares the workload, accelerating development significantly."
+      }
+    ],
+    "requirements": {
+      "companyFlags.hasFirstEmployee": false
+    },
+    "stage": "PMF",
+    "weight": 1,
+    "repeatable": false
+  },
+  {
+    "id": "E033",
+    "title": "Growth Hacking Discovery",
+    "description": "You discover a growth channel that's working well. Should you exploit it heavily or diversify?",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Go all-in on this channel",
+        "result": {
+          "companyStats.users": 1000,
+          "companyStats.revenue": 8000,
+          "companyStats.burnRate": 3000
+        },
+        "resultText": "Massive growth through this single channel, but you're vulnerable if it stops working."
+      },
+      {
+        "id": "C002",
+        "text": "Build multiple channels",
+        "result": {
+          "founderStats.stamina": -2,
+          "companyStats.users": 600,
+          "companyStats.revenue": 5000,
+          "companyStats.burnRate": 5000
+        },
+        "resultText": "More sustainable growth across multiple channels, though it requires more resources."
+      }
+    ],
+    "stage": "Scaling",
+    "weight": 3
+  },
+  {
+    "id": "E034",
+    "title": "Competitor Acquisition Offer",
+    "description": "A larger competitor offers to acquire you for $2M. It's earlier than you hoped, but it's real money.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Accept the acquisition",
+        "result": {
+          "founderStats.personalCash": 1200000,
+          "founderStats.morale": 3,
+          "gameOver": true,
+          "gameOverReason": "Successful early acquisition for $2M"
+        },
+        "resultText": "You take the exit and join the larger company. Not the unicorn dream, but financial security achieved!"
+      },
+      {
+        "id": "C002",
+        "text": "Decline and keep building",
+        "result": {
+          "founderStats.morale": 2,
+          "companyStats.productProgress": 8,
+          "companyFlags.exitOffersReceived": 1
+        },
+        "resultText": "You bet on yourself and keep building. The validation boosts confidence, but you wonder what could have been."
+      }
+    ],
+    "stage": "Scaling",
+    "weight": 1
+  },
+  {
+    "id": "E035",
+    "title": "Series A Preparation",
+    "description": "VCs are sniffing around for your Series A. You need strong metrics and a compelling growth story.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Focus on revenue growth",
+        "result": {
+          "founderStats.stamina": -2,
+          "companyStats.revenue": 15000,
+          "companyStats.investorTrust": 2
+        },
+        "resultText": "Strong revenue growth impresses investors and validates your business model clearly."
+      },
+      {
+        "id": "C002",
+        "text": "Focus on user acquisition",
+        "result": {
+          "companyStats.users": 2000,
+          "companyStats.burnRate": 8000,
+          "companyStats.investorTrust": 1
+        },
+        "resultText": "Rapid user growth shows market demand, though monetization questions remain."
+      }
+    ],
+    "requirements": {
+      "companyFlags.hasRaisedSeed": true,
+      "companyFlags.hasRaisedSeriesA": false
+    },
+    "stage": "Scaling",
+    "weight": 2
+  },
+  {
+    "id": "E036",
+    "title": "Cash Flow Crisis",
+    "description": "Despite growth, you're burning cash faster than expected. Runway is down to 8 weeks.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Emergency fundraising",
+        "result": {
+          "founderStats.stamina": -4,
+          "companyStats.companyCash": 300000,
+          "companyStats.investorTrust": -2
+        },
+        "resultText": "You raise bridge funding but at terrible terms. Desperation shows and investors extract harsh conditions."
+      },
+      {
+        "id": "C002",
+        "text": "Cut expenses drastically",
+        "result": {
+          "founderStats.morale": -3,
+          "companyStats.burnRate": -5000,
+          "companyStats.productProgress": -8
+        },
+        "resultText": "Severe cuts extend runway but devastate team morale and slow progress significantly."
+      },
+      {
+        "id": "C003",
+        "text": "Focus on immediate revenue",
+        "requires": {
+          "founderStats.hustle": 8
+        },
+        "result": {
+          "founderStats.stamina": -3,
+          "companyStats.revenue": 12000,
+          "founderStats.morale": 1
+        },
+        "resultText": "Aggressive sales efforts bring in cash quickly. Not sustainable long-term, but saves the company."
+      }
+    ],
+    "stage": "Crisis",
+    "weight": 3
+  },
+  {
+    "id": "E037",
+    "title": "Key Customer Threatens to Leave",
+    "description": "Your biggest customer (40% of revenue) is unhappy and considering switching to a competitor.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Give them major concessions",
+        "result": {
+          "companyStats.revenue": -3000,
+          "founderStats.morale": -1,
+          "companyStats.users": 1
+        },
+        "resultText": "You keep them but at a much lower price. Revenue drops but the relationship survives."
+      },
+      {
+        "id": "C002",
+        "text": "Let them go and diversify",
+        "result": {
+          "companyStats.revenue": -8000,
+          "companyStats.users": 200,
+          "founderStats.morale": 1
+        },
+        "resultText": "Losing them hurts, but you build a more diverse customer base that's less risky."
+      }
+    ],
+    "stage": "Crisis",
+    "weight": 2
+  },
+  {
+    "id": "E038",
+    "title": "Technical Debt Crisis",
+    "description": "Your rapid growth has created massive technical debt. The system is becoming unstable.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Rebuild the core system",
+        "result": {
+          "founderStats.stamina": -4,
+          "companyStats.productProgress": 15,
+          "companyStats.users": -100,
+          "weeksLost": 4
+        },
+        "resultText": "A month of rebuilding creates a solid foundation, but you lose momentum and some users."
+      },
+      {
+        "id": "C002",
+        "text": "Band-aid fixes for now",
+        "result": {
+          "founderStats.health": -2,
+          "companyStats.productProgress": 3,
+          "companyStats.users": 100
+        },
+        "resultText": "Quick fixes keep things running, but technical debt continues to accumulate dangerously."
+      }
+    ],
+    "stage": "Crisis",
+    "weight": 2
+  },
+  {
+    "id": "E039",
+    "title": "IPO vs Acquisition Decision",
+    "description": "You have two exit options: a $50M acquisition offer or preparing for an IPO that could be worth $200M+.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Take the acquisition",
+        "result": {
+          "founderStats.personalCash": 30000000,
+          "founderStats.morale": 5,
+          "gameOver": true,
+          "gameOverReason": "Successful acquisition for $50M"
+        },
+        "resultText": "You take the certain money and achieve a great outcome for everyone involved."
+      },
+      {
+        "id": "C002",
+        "text": "Go for IPO",
+        "requires": {
+          "founderStats.morale": 8,
+          "companyStats.revenue": 30000
+        },
+        "result": {
+          "founderStats.stamina": -5,
+          "companyStats.burnRate": 25000,
+          "founderStats.morale": 3
+        },
+        "resultText": "You begin the grueling IPO process. High risk, high reward - but the stress is immense.",
+        "nextEvent": "E040"
+      }
+    ],
+    "requirements": {
+      "companyStats.revenue": 20000,
+      "companyFlags.hasRaisedSeriesA": true
+    },
+    "stage": "Exit",
+    "weight": 2
+  },
+  {
+    "id": "E040",
+    "title": "IPO Success",
+    "description": "Your IPO is successful! The company goes public at a $150M valuation.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Celebrate your success",
+        "result": {
+          "founderStats.personalCash": 75000000,
+          "founderStats.morale": 10,
+          "gameOver": true,
+          "gameOverReason": "Successful IPO with $150M valuation!"
+        },
+        "resultText": "You've achieved the ultimate startup dream! Your company is public and you're worth tens of millions."
       }
     ],
     "stage": "Exit",
     "weight": 0,
     "repeatable": false
+  },
+  {
+    "id": "E041",
+    "title": "Legacy Decision",
+    "description": "As a successful founder, you're considering what to do next. Angel investing, starting another company, or taking a break?",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Become an angel investor",
+        "result": {
+          "founderStats.morale": 3,
+          "gameOver": true,
+          "gameOverReason": "Successful exit - now helping other founders as an angel investor"
+        },
+        "resultText": "You use your experience and wealth to help the next generation of entrepreneurs succeed."
+      },
+      {
+        "id": "C002",
+        "text": "Start another company",
+        "result": {
+          "founderStats.morale": 5,
+          "gameOver": true,
+          "gameOverReason": "Serial entrepreneur - starting your next venture!"
+        },
+        "resultText": "The startup bug has bitten hard. You're already planning your next big venture with hard-earned wisdom."
+      }
+    ],
+    "requirements": {
+      "companyFlags.exitOffersReceived": 1
+    },
+    "stage": "Exit",
+    "weight": 1
   }
 ] 

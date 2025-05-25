@@ -153,7 +153,9 @@
           "founderStats.morale": 5,
           "companyStats.companyCash": 125000,
           "companyStats.runway": 40,
-          "companyStats.investorTrust": 3
+          "companyStats.investorTrust": 3,
+          "companyFlags.inAccelerator": true,
+          "companyFlags.acceleratorName": "Y Combinator"
         },
         "resultText": "Congratulations! You've been accepted into the accelerator program! You receive $125,000 in funding and prepare to move to San Francisco."
       }
@@ -173,7 +175,9 @@
         "result": {
           "founderStats.tech": 3,
           "founderStats.morale": 2,
-          "companyStats.productProgress": 15
+          "companyStats.productProgress": 15,
+          "companyFlags.hasCoFounder": true,
+          "companyFlags.coFounderEquity": 40
         },
         "resultText": "Your new co-founder quickly solves technical problems that were blocking progress. The product development speeds up significantly."
       },
@@ -186,7 +190,9 @@
         "result": {
           "founderStats.tech": 2,
           "founderStats.morale": 1,
-          "companyStats.productProgress": 10
+          "companyStats.productProgress": 10,
+          "companyFlags.hasCoFounder": true,
+          "companyFlags.coFounderEquity": 25
         },
         "resultText": "After some negotiation, they accept 25% equity. You gain technical expertise without giving up too much ownership."
       },
@@ -201,8 +207,12 @@
         "resultText": "You struggle through the technical challenges yourself, learning a lot but progressing slowly."
       }
     ],
+    "requirements": {
+      "companyFlags.hasCoFounder": false
+    },
     "stage": "Garage",
-    "weight": 1
+    "weight": 1,
+    "repeatable": false
   },
   {
     "id": "E007",
@@ -245,7 +255,7 @@
         "resultText": "You work extra hours to ensure both your presentation and demo are solid. It's exhausting but well-rounded."
       }
     ],
-    "stage": "DemoDay",
+    "stage": "Demo Day",
     "weight": 2
   },
   {
@@ -288,7 +298,7 @@
         "resultText": "The audience gasps as you demonstrate your product. The tech blogs write about your demo, bringing in new users."
       }
     ],
-    "stage": "DemoDay",
+    "stage": "Demo Day",
     "weight": 3
   },
   {

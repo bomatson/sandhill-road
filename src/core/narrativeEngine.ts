@@ -42,21 +42,30 @@ export const loadEvents = async (): Promise<void> => {
     // In a browser environment, we'd fetch from a URL
     // In Node, we could use fs module
     let eventsData;
+    let moreEventsData;
     
     if (typeof window !== 'undefined') {
       // Browser environment
-      const response = await fetch('/data/comprehensive-events.json');
+      const response = await fetch('/data/events.json');
       eventsData = await response.json();
+      const moreResponse = await fetch('/data/more-events.json');
+      moreEventsData = await moreResponse.json();
     } else {
       // Node environment - using dynamic import instead of require
       const fs = await import('fs/promises');
       const path = await import('path');
-      const filePath = path.join(process.cwd(), 'src/data/comprehensive-events.json');
+      
+      const filePath = path.join(process.cwd(), 'src/data/events.json');
       const fileData = await fs.readFile(filePath, 'utf-8');
       eventsData = JSON.parse(fileData);
+      
+      const moreFilePath = path.join(process.cwd(), 'src/data/more-events.json');
+      const moreFileData = await fs.readFile(moreFilePath, 'utf-8');
+      moreEventsData = JSON.parse(moreFileData);
     }
     
-    eventsDatabase = eventsData;
+    // Combine both event arrays
+    eventsDatabase = [...eventsData, ...moreEventsData];
     return;
   } catch (error) {
     console.error("Failed to load events:", error);
