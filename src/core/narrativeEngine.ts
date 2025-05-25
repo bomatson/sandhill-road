@@ -45,13 +45,13 @@ export const loadEvents = async (): Promise<void> => {
     
     if (typeof window !== 'undefined') {
       // Browser environment
-      const response = await fetch('/data/events.json');
+      const response = await fetch('/data/comprehensive-events.json');
       eventsData = await response.json();
     } else {
       // Node environment - using dynamic import instead of require
       const fs = await import('fs/promises');
       const path = await import('path');
-      const filePath = path.join(process.cwd(), 'src/data/events.json');
+      const filePath = path.join(process.cwd(), 'src/data/comprehensive-events.json');
       const fileData = await fs.readFile(filePath, 'utf-8');
       eventsData = JSON.parse(fileData);
     }
@@ -98,9 +98,13 @@ export const getAvailableEvents = (): GameEvent[] => {
           }
         }
         
-        // Compare the value (if it's a number)
+        // Compare the value based on type
         if (typeof currentValue === 'number' && typeof value === 'number') {
           if (currentValue < value) {
+            return false; // Requirement not met
+          }
+        } else if (typeof currentValue === 'boolean' && typeof value === 'boolean') {
+          if (currentValue !== value) {
             return false; // Requirement not met
           }
         }
@@ -207,12 +211,19 @@ export const makeChoice = (choiceId: string): {
         }
       }
       
-      // Compare the value (if it's a number)
+      // Compare the value based on type
       if (typeof currentValue === 'number' && typeof value === 'number') {
         if (currentValue < value) {
           return { 
             success: false, 
             resultText: `Your ${stat} (${currentValue}) is too low. Need at least ${value}.` 
+          };
+        }
+      } else if (typeof currentValue === 'boolean' && typeof value === 'boolean') {
+        if (currentValue !== value) {
+          return { 
+            success: false, 
+            resultText: `Requirement not met: ${stat} must be ${value}.` 
           };
         }
       }
@@ -243,7 +254,17 @@ export const makeChoice = (choiceId: string): {
         continue;
       }
       
-      // Handle nested stats
+      if (stat === 'gameOver' && typeof value === 'boolean' && value === true) {
+        newState.gameOver = true;
+        continue;
+      }
+      
+      if (stat === 'gameOverReason' && typeof value === 'string') {
+        newState.gameOverReason = value;
+        continue;
+      }
+      
+      // Handle nested stats (including companyFlags)
       const statPath = stat.split('.');
       if (statPath.length === 2) {
         const [category, attribute] = statPath;
@@ -252,8 +273,13 @@ export const makeChoice = (choiceId: string): {
             typeof newState[category as keyof GameState] === 'object') {
           const categoryObj = newState[category as keyof GameState] as Record<string, any>;
           
-          if (categoryObj[attribute] !== undefined && typeof categoryObj[attribute] === 'number') {
-            categoryObj[attribute] = Math.max(0, categoryObj[attribute] + (value as number));
+          if (categoryObj && categoryObj[attribute] !== undefined) {
+            if (typeof categoryObj[attribute] === 'number' && typeof value === 'number') {
+              categoryObj[attribute] = Math.max(0, categoryObj[attribute] + value);
+            } else {
+              // For booleans, strings, and direct number assignments
+              categoryObj[attribute] = value;
+            }
           }
         }
       }

@@ -42,12 +42,28 @@ export type StageProgress = {
   availableEvents: string[];
 };
 
+export type CompanyFlags = {
+  hasCoFounder: boolean;
+  coFounderEquity: number;
+  inAccelerator: boolean;
+  acceleratorName?: string;
+  hasRaisedSeed: boolean;
+  hasRaisedSeriesA: boolean;
+  hasPMF: boolean;
+  hasFirstEmployee: boolean;
+  hasOffice: boolean;
+  hasBoard: boolean;
+  majorCrisisSurvived: boolean;
+  exitOffersReceived: number;
+};
+
 export type GameState = {
   founderName: string;
   companyName: string;
   founderStats: FounderStats;
   companyStats: CompanyStats;
   stageProgress: StageProgress;
+  companyFlags: CompanyFlags;
   gameOver: boolean;
   gameOverReason?: string;
 };
@@ -86,6 +102,20 @@ export const createInitialGameState = (
       week: 1,
       completedEvents: [],
       availableEvents: []
+    },
+    companyFlags: {
+      hasCoFounder: false,
+      coFounderEquity: 0,
+      inAccelerator: false,
+      acceleratorName: undefined,
+      hasRaisedSeed: false,
+      hasRaisedSeriesA: false,
+      hasPMF: false,
+      hasFirstEmployee: false,
+      hasOffice: false,
+      hasBoard: false,
+      majorCrisisSurvived: false,
+      exitOffersReceived: 0
     },
     gameOver: false
   };
