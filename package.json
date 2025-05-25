@@ -1,6 +1,6 @@
 {
   "name": "sandhill-road",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A narrative-driven startup simulation game where you guide a founder from garage to exit",
   "main": "dist/index.js",
   "bin": {
