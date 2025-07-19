@@ -11,8 +11,14 @@ export const applyResult = (
   result: Partial<Record<string, number>>
 ): void => {
   updateGameState(state => {
-    // Create a deep copy of the state
-    const newState = JSON.parse(JSON.stringify(state)) as GameState;
+    // Create a shallow copy of the state - deep cloning not needed for this use case
+    const newState = {
+      ...state,
+      founderStats: { ...state.founderStats },
+      companyStats: { ...state.companyStats },
+      stageProgress: { ...state.stageProgress },
+      companyFlags: { ...state.companyFlags }
+    };
     
     // Apply each result key-value pair
     for (const [key, value] of Object.entries(result)) {
@@ -91,4 +97,4 @@ export const getAvailableChoices = (
   return choices.filter(choice => 
     !choice.requires || meetsRequirements(state, choice.requires)
   );
-}; 
+};  
