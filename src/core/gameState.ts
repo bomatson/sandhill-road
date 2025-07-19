@@ -40,6 +40,7 @@ export type StageProgress = {
   week: number;
   completedEvents: string[];
   availableEvents: string[];
+  completedExclusiveGroups: string[];
 };
 
 export type CompanyFlags = {
@@ -90,7 +91,7 @@ export const createInitialGameState = (
     },
     companyStats: {
       runway: 12, // weeks
-      burnRate: 2000, // per week
+      burnRate: 5000, // per week
       users: 0,
       productProgress: 0,
       companyCash: 10000,
@@ -101,7 +102,8 @@ export const createInitialGameState = (
       currentStage: GameStage.Garage,
       week: 1,
       completedEvents: [],
-      availableEvents: []
+      availableEvents: [],
+      completedExclusiveGroups: []
     },
     companyFlags: {
       hasCoFounder: false,
@@ -265,4 +267,4 @@ export const advanceWeek = (): void => {
       }
     };
   });
-}; 
+};    

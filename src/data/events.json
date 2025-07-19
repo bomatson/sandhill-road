@@ -256,7 +256,8 @@
       }
     ],
     "stage": "Demo Day",
-    "weight": 2
+    "weight": 2,
+    "exclusiveGroup": "demo-day-main"
   },
   {
     "id": "E008",
@@ -299,7 +300,8 @@
       }
     ],
     "stage": "Demo Day",
-    "weight": 3
+    "weight": 3,
+    "exclusiveGroup": "demo-day-main"
   },
   {
     "id": "E009",
@@ -656,7 +658,7 @@
         "id": "C002",
         "text": "Drastic cost-cutting",
         "result": {
-          "companyStats.burnRate": -5000,
+          "companyStats.burnRate": -2000,
           "companyStats.productProgress": -10,
           "founderStats.morale": -3,
           "companyStats.users": -200
@@ -898,4 +900,4 @@
     "weight": 0,
     "repeatable": false
   }
-] 
+]    

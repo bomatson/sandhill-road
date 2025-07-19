@@ -269,7 +269,7 @@
         "id": "C002",
         "text": "Drastic cost-cutting",
         "result": {
-          "companyStats.burnRate": -5000,
+          "companyStats.burnRate": -2000,
           "companyStats.productProgress": -10,
           "founderStats.morale": -3,
           "companyStats.users": -200
@@ -558,7 +558,8 @@
       }
     ],
     "stage": "Demo Day",
-    "weight": 2
+    "weight": 2,
+    "exclusiveGroup": "demo-day-prep"
   },
   {
     "id": "E025",
@@ -586,7 +587,8 @@
       }
     ],
     "stage": "Demo Day",
-    "weight": 2
+    "weight": 2,
+    "exclusiveGroup": "demo-day-followup"
   },
   {
     "id": "E026",
@@ -615,7 +617,8 @@
       }
     ],
     "stage": "Demo Day",
-    "weight": 1
+    "weight": 1,
+    "exclusiveGroup": "demo-day-followup"
   },
   {
     "id": "E027",
@@ -940,7 +943,7 @@
         "text": "Cut expenses drastically",
         "result": {
           "founderStats.morale": -3,
-          "companyStats.burnRate": -5000,
+          "companyStats.burnRate": -2000,
           "companyStats.productProgress": -8
         },
         "resultText": "Severe cuts extend runway but devastate team morale and slow progress significantly."
@@ -1113,4 +1116,4 @@
     "stage": "Exit",
     "weight": 1
   }
-] 
+]    

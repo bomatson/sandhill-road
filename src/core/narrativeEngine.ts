@@ -8,6 +8,7 @@ import {
   advanceWeek, 
   GameStage 
 } from './gameState';
+import { calculateRevenueFromUsers } from '../utils/revenueUtils';
 
 export type EventChoice = {
   id: string;
@@ -28,6 +29,7 @@ export type GameEvent = {
   stage: GameStage | GameStage[];
   repeatable?: boolean;
   weight?: number; // Higher weight = more likely to be selected
+  exclusiveGroup?: string;
 };
 
 // Event database
@@ -78,6 +80,7 @@ export const getAvailableEvents = (): GameEvent[] => {
   const state = getGameState();
   const currentStage = state.stageProgress.currentStage;
   const completedEvents = state.stageProgress.completedEvents;
+  const completedExclusiveGroups = state.stageProgress.completedExclusiveGroups;
   
   return eventsDatabase.filter(event => {
     // Check if event is for the current stage
@@ -89,6 +92,11 @@ export const getAvailableEvents = (): GameEvent[] => {
     
     // Check if event was already completed and is not repeatable
     if (!event.repeatable && completedEvents.includes(event.id)) {
+      return false;
+    }
+
+    // Check if event's exclusive group has already been completed
+    if (event.exclusiveGroup && completedExclusiveGroups.includes(event.exclusiveGroup)) {
       return false;
     }
     
@@ -250,6 +258,13 @@ export const makeChoice = (choiceId: string): {
         ...newState.stageProgress.completedEvents,
         currentEvent.id
       ];
+      
+      if (currentEvent.exclusiveGroup) {
+        newState.stageProgress.completedExclusiveGroups = [
+          ...newState.stageProgress.completedExclusiveGroups,
+          currentEvent.exclusiveGroup
+        ];
+      }
     }
     
     // Apply the choice results
@@ -284,7 +299,16 @@ export const makeChoice = (choiceId: string): {
           
           if (categoryObj && categoryObj[attribute] !== undefined) {
             if (typeof categoryObj[attribute] === 'number' && typeof value === 'number') {
-              categoryObj[attribute] = Math.max(0, categoryObj[attribute] + value);
+              if (category === 'companyStats' && attribute === 'users' && value > 0) {
+                const currentUsers = categoryObj[attribute];
+                const newUsers = Math.max(0, currentUsers + value);
+                categoryObj[attribute] = newUsers;
+                
+                const newRevenue = calculateRevenueFromUsers(newUsers);
+                categoryObj['revenue'] = newRevenue;
+              } else {
+                categoryObj[attribute] = Math.max(0, categoryObj[attribute] + value);
+              }
             } else {
               // For booleans, strings, and direct number assignments
               categoryObj[attribute] = value;
@@ -360,4 +384,4 @@ export const progressToNextStage = (): GameStage => {
   }));
   
   return nextStage;
-}; 
+};      
