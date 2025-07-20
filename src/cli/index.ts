@@ -3,12 +3,13 @@
 import chalk from 'chalk';
 import figlet from 'figlet';
 import inquirer from 'inquirer';
-import { 
-  initGame, 
-  getGameState, 
-  saveGame, 
+import {
+  initGame,
+  getGameState,
+  saveGame,
   loadGame,
-  GameStage
+  GameStage,
+  advanceWeek
 } from '../core/gameState';
 import {
   loadEvents,
@@ -101,17 +102,20 @@ const gameLoop = async () => {
       if (!currentEvent) {
         console.log(chalk.yellow('No available events for the current stage.'));
         console.log(chalk.yellow('Progressing to the next stage...'));
-        
+
         const nextStage = progressToNextStage();
         console.log(chalk.green(`\nYou've reached the ${nextStage} stage!`));
         console.log(chalk.green(getStageDescription(nextStage)));
-        
+
+        // Advance time since a week passes even without an event
+        advanceWeek();
+
         await inquirer.prompt({
           type: 'input',
           name: 'continue',
           message: 'Press ENTER to continue...'
         });
-        
+
         continue;
       }
     }
