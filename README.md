@@ -21,6 +21,7 @@ Sandhill Road is a text-based survival strategy game inspired by Oregon Trail, b
 - Multiple game stages: Garage, Demo Day, Fundraising, PMF, Scaling, Crisis, Exit
 - Save/load game progress
 - 20+ unique narrative events
+- Occasional random events like market crashes or pandemics that shake up your strategy
 
 ## Installation
 
