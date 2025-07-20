@@ -1,14 +1,15 @@
 // Narrative Engine for Sandhill Road
 // Handles events, choices, and outcomes
 
-import { 
-  GameState, 
-  getGameState, 
-  updateGameState, 
-  advanceWeek, 
-  GameStage 
+import {
+  GameState,
+  getGameState,
+  updateGameState,
+  advanceWeek,
+  GameStage
 } from './gameState';
 import { calculateRevenueFromUsers } from '../utils/revenueUtils';
+import { applyResult } from '../utils/eventUtils';
 
 export type EventChoice = {
   id: string;
@@ -32,8 +33,17 @@ export type GameEvent = {
   exclusiveGroup?: string;
 };
 
+export type RandomEvent = {
+  id: string;
+  title: string;
+  description: string;
+  effect: Partial<Record<string, number>>;
+  weight?: number;
+};
+
 // Event database
 let eventsDatabase: GameEvent[] = [];
+let randomEventsDatabase: RandomEvent[] = [];
 
 // Current event being shown to the player
 let currentEvent: GameEvent | null = null;
@@ -45,6 +55,7 @@ export const loadEvents = async (): Promise<void> => {
     // In Node, we could use fs module
     let eventsData;
     let moreEventsData;
+    let randomEventsData;
     
     if (typeof window !== 'undefined') {
       // Browser environment
@@ -52,6 +63,8 @@ export const loadEvents = async (): Promise<void> => {
       eventsData = await response.json();
       const moreResponse = await fetch('/data/more-events.json');
       moreEventsData = await moreResponse.json();
+      const randomResponse = await fetch('/data/random-events.json');
+      randomEventsData = await randomResponse.json();
     } else {
       // Node environment - using dynamic import instead of require
       const fs = await import('fs/promises');
@@ -64,10 +77,15 @@ export const loadEvents = async (): Promise<void> => {
       const moreFilePath = path.join(process.cwd(), 'src/data/more-events.json');
       const moreFileData = await fs.readFile(moreFilePath, 'utf-8');
       moreEventsData = JSON.parse(moreFileData);
+
+      const randomFilePath = path.join(process.cwd(), 'src/data/random-events.json');
+      const randomFileData = await fs.readFile(randomFilePath, 'utf-8');
+      randomEventsData = JSON.parse(randomFileData);
     }
     
     // Combine both event arrays
     eventsDatabase = [...eventsData, ...moreEventsData];
+    randomEventsDatabase = randomEventsData || [];
     return;
   } catch (error) {
     console.error("Failed to load events:", error);
@@ -159,6 +177,37 @@ export const selectRandomEvent = (): GameEvent | null => {
   
   // Fallback in case of rounding errors
   return availableEvents[0];
+};
+
+// Select a random global event
+const selectRandomRandomEvent = (): RandomEvent | null => {
+  if (randomEventsDatabase.length === 0) return null;
+
+  const totalWeight = randomEventsDatabase.reduce(
+    (sum, event) => sum + (event.weight || 1),
+    0
+  );
+  let randomValue = Math.random() * totalWeight;
+
+  for (const event of randomEventsDatabase) {
+    const weight = event.weight || 1;
+    if (randomValue <= weight) {
+      return event;
+    }
+    randomValue -= weight;
+  }
+  return randomEventsDatabase[0];
+};
+
+// Trigger a random global event with a given probability
+export const triggerRandomEvent = (chance = 0.15): RandomEvent | null => {
+  if (Math.random() > chance) return null;
+
+  const event = selectRandomRandomEvent();
+  if (!event) return null;
+
+  applyResult(event.effect);
+  return event;
 };
 
 // Get the current event

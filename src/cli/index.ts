@@ -18,7 +18,8 @@ import {
   clearCurrentEvent,
   getCurrentEvent,
   getStageDescription,
-  progressToNextStage
+  progressToNextStage,
+  triggerRandomEvent
 } from '../core/narrativeEngine';
 
 // ASCII art banner
@@ -110,6 +111,12 @@ const gameLoop = async () => {
         // Advance time since a week passes even without an event
         advanceWeek();
 
+        const randomEvent = triggerRandomEvent();
+        if (randomEvent) {
+          console.log(chalk.magentaBright(`\n*** Random Event: ${randomEvent.title} ***`));
+          console.log(chalk.magenta(`${randomEvent.description}\n`));
+        }
+
         await inquirer.prompt({
           type: 'input',
           name: 'continue',
@@ -161,7 +168,13 @@ const gameLoop = async () => {
     const result = makeChoice(choice);
     
     console.log('\n' + chalk.yellow(result.resultText) + '\n');
-    
+
+    const randomEvent = triggerRandomEvent();
+    if (randomEvent) {
+      console.log(chalk.magentaBright(`\n*** Random Event: ${randomEvent.title} ***`));
+      console.log(chalk.magenta(`${randomEvent.description}\n`));
+    }
+
     await inquirer.prompt({
       type: 'input',
       name: 'continue',
