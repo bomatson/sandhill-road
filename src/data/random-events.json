@@ -1,0 +1,39 @@
+[
+  {
+    "id": "R001",
+    "title": "Global Market Crash",
+    "description": "A sudden market crash reduces customer spending and investor enthusiasm.",
+    "effect": {
+      "companyStats.revenue": -10000,
+      "companyStats.investorTrust": -2,
+      "founderStats.morale": -3
+    },
+    "businessTypes": ["SaaS", "AI", "Marketplace", "Physical Goods", "Biotech"]
+  },
+  {
+    "id": "R002",
+    "title": "Pandemic Outbreak",
+    "description": "A global pandemic disrupts supply chains and forces your team to work remotely.",
+    "effect": {
+      "founderStats.stamina": -2,
+      "companyStats.productProgress": -5,
+      "companyStats.users": -100
+    },
+    "supplyChainImpact": {
+      "companyStats.productProgress": -2,
+      "companyStats.revenue": -2000
+    },
+    "businessTypes": ["Physical Goods", "Biotech", "Marketplace"]
+  },
+  {
+    "id": "R003",
+    "title": "Regional Conflict",
+    "description": "An unexpected war in a key market affects your expansion plans.",
+    "effect": {
+      "companyStats.revenue": -5000,
+      "companyStats.users": -50,
+      "founderStats.morale": -2
+    },
+    "businessTypes": ["Physical Goods", "Marketplace"]
+  }
+]

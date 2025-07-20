@@ -865,6 +865,114 @@
     "weight": 2
   },
   {
+    "id": "E022",
+    "title": "Acqui-hire Opportunity",
+    "description": "A larger company wants to acqui-hire your team for $5M, mostly for the talent.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Take the deal",
+        "result": {
+          "companyStats.companyCash": 5000000,
+          "founderStats.morale": 3
+        },
+        "resultText": "Your product is shelved but the team is happy with generous packages.",
+        "nextEvent": "E030"
+      },
+      {
+        "id": "C002",
+        "text": "Negotiate for better terms",
+        "requires": {
+          "founderStats.hustle": 8
+        },
+        "result": {
+          "companyStats.companyCash": 8000000,
+          "founderStats.morale": 4
+        },
+        "resultText": "Your negotiation secures a better payout and partial control to keep building.",
+        "nextEvent": "E030"
+      },
+      {
+        "id": "C003",
+        "text": "Decline and push forward",
+        "result": {
+          "founderStats.morale": -1,
+          "companyStats.productProgress": 5
+        },
+        "resultText": "You double down on your vision and reject the acqui-hire offer."
+      }
+    ],
+    "stage": "Scaling",
+    "weight": 2
+  },
+  {
+    "id": "E023",
+    "title": "Bidding War",
+    "description": "Two industry giants want to acquire you, sparking a lucrative bidding war.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Sell to highest bidder",
+        "result": {
+          "companyStats.companyCash": 50000000,
+          "founderStats.morale": 5
+        },
+        "resultText": "The fierce competition drives the price up and you close a massive deal.",
+        "nextEvent": "E030"
+      },
+      {
+        "id": "C002",
+        "text": "Choose the best partner",
+        "result": {
+          "companyStats.companyCash": 40000000,
+          "founderStats.morale": 4,
+          "companyStats.investorTrust": 2
+        },
+        "resultText": "You accept slightly less money in favor of the partner that shares your vision.",
+        "nextEvent": "E030"
+      },
+      {
+        "id": "C003",
+        "text": "Reject both offers",
+        "result": {
+          "companyStats.productProgress": 15,
+          "founderStats.stamina": -2
+        },
+        "resultText": "Investors are anxious but you decide to stay independent and keep growing."
+      }
+    ],
+    "stage": "Exit",
+    "weight": 2
+  },
+  {
+    "id": "E024",
+    "title": "Overseas Manufacturing Partner",
+    "description": "To meet growing demand, you're considering an overseas manufacturer which introduces new supply chain dependencies.",
+    "choices": [
+      {
+        "id": "C001",
+        "text": "Sign the long-term contract",
+        "result": {
+          "companyStats.supplyChainExposure": 3,
+          "companyStats.productProgress": 10,
+          "companyStats.burnRate": 10000
+        },
+        "resultText": "Production ramps up quickly but you're now tied to a complex supply chain."
+      },
+      {
+        "id": "C002",
+        "text": "Keep production local",
+        "result": {
+          "companyStats.productProgress": 3,
+          "companyStats.burnRate": 2000
+        },
+        "resultText": "Growth is slower but you remain nimble without major dependencies."
+      }
+    ],
+    "stage": "Scaling",
+    "weight": 1
+  },
+  {
     "id": "E030",
     "title": "Your Startup Journey Ends",
     "description": "You've successfully exited your startup. Looking back at the journey, what will you do with your new freedom and wealth?",
@@ -900,4 +1008,4 @@
     "weight": 0,
     "repeatable": false
   }
-]    
+]

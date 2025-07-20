@@ -9,7 +9,8 @@ import {
   saveGame,
   loadGame,
   GameStage,
-  advanceWeek
+  advanceWeek,
+  BusinessType
 } from '../core/gameState';
 import {
   loadEvents,
@@ -18,7 +19,8 @@ import {
   clearCurrentEvent,
   getCurrentEvent,
   getStageDescription,
-  progressToNextStage
+  progressToNextStage,
+  triggerRandomEvent
 } from '../core/narrativeEngine';
 
 // ASCII art banner
@@ -50,6 +52,7 @@ const showStats = () => {
   console.log(`${chalk.bold('Personal Cash:')} $${state.founderStats.personalCash.toLocaleString()}`);
   
   console.log(chalk.magenta('\n=== COMPANY STATS ==='));
+  console.log(`${chalk.bold('Type:')} ${state.businessType}`);
   console.log(`${chalk.bold('Company Cash:')} $${state.companyStats.companyCash.toLocaleString()}`);
   console.log(`${chalk.bold('Burn Rate:')} $${state.companyStats.burnRate.toLocaleString()}/week`);
   console.log(`${chalk.bold('Runway:')} ${state.companyStats.runway} weeks`);
@@ -110,6 +113,12 @@ const gameLoop = async () => {
         // Advance time since a week passes even without an event
         advanceWeek();
 
+        const randomEvent = triggerRandomEvent();
+        if (randomEvent) {
+          console.log(chalk.magentaBright(`\n*** Random Event: ${randomEvent.title} ***`));
+          console.log(chalk.magenta(`${randomEvent.description}\n`));
+        }
+
         await inquirer.prompt({
           type: 'input',
           name: 'continue',
@@ -161,7 +170,13 @@ const gameLoop = async () => {
     const result = makeChoice(choice);
     
     console.log('\n' + chalk.yellow(result.resultText) + '\n');
-    
+
+    const randomEvent = triggerRandomEvent();
+    if (randomEvent) {
+      console.log(chalk.magentaBright(`\n*** Random Event: ${randomEvent.title} ***`));
+      console.log(chalk.magenta(`${randomEvent.description}\n`));
+    }
+
     await inquirer.prompt({
       type: 'input',
       name: 'continue',
@@ -201,6 +216,19 @@ const createCharacter = async () => {
     },
     {
       type: 'list',
+      name: 'businessType',
+      message: 'What type of business are you building?',
+      choices: [
+        { name: BusinessType.SaaS, value: BusinessType.SaaS },
+        { name: BusinessType.AI, value: BusinessType.AI },
+        { name: BusinessType.Marketplace, value: BusinessType.Marketplace },
+        { name: BusinessType.Physical, value: BusinessType.Physical },
+        { name: BusinessType.Biotech, value: BusinessType.Biotech }
+      ],
+      default: BusinessType.SaaS
+    },
+    {
+      type: 'list',
       name: 'initialCash',
       message: 'How much personal cash do you start with?',
       choices: [
@@ -217,10 +245,10 @@ const createCharacter = async () => {
 
 // Start a new game
 const startNewGame = async () => {
-  const { founderName, companyName, initialCash } = await createCharacter();
-  
+  const { founderName, companyName, businessType, initialCash } = await createCharacter();
+
   // Initialize the game state
-  initGame(founderName, companyName, initialCash);
+  initGame(founderName, companyName, businessType, initialCash);
   
   // Load events
   await loadEvents();

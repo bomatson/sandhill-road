@@ -3,6 +3,15 @@
 
 import { saveToFile, loadFromFile } from '../utils/fileStorage';
 
+/** Types of businesses players can choose */
+export enum BusinessType {
+  SaaS = 'SaaS',
+  AI = 'AI',
+  Marketplace = 'Marketplace',
+  Physical = 'Physical Goods',
+  Biotech = 'Biotech'
+}
+
 export type FounderStats = {
   health: number;
   morale: number;
@@ -23,6 +32,11 @@ export type CompanyStats = {
   companyCash: number;
   revenue: number;
   investorTrust: number;
+  /**
+   * Represents how reliant the business is on a physical supply chain.
+   * 0 means no dependency while higher values amplify disruptions like pandemics.
+   */
+  supplyChainExposure: number;
 };
 
 export enum GameStage {
@@ -61,6 +75,8 @@ export type CompanyFlags = {
 export type GameState = {
   founderName: string;
   companyName: string;
+  /** Type of business being built */
+  businessType: BusinessType;
   founderStats: FounderStats;
   companyStats: CompanyStats;
   stageProgress: StageProgress;
@@ -71,13 +87,15 @@ export type GameState = {
 
 // Default starting values for a new game
 export const createInitialGameState = (
-  founderName: string, 
+  founderName: string,
   companyName: string,
+  businessType: BusinessType,
   initialPersonalCash: number = 30000
 ): GameState => {
   return {
     founderName,
     companyName,
+    businessType,
     founderStats: {
       health: 8,
       morale: 10,
@@ -96,7 +114,8 @@ export const createInitialGameState = (
       productProgress: 0,
       companyCash: 10000,
       revenue: 0,
-      investorTrust: 5
+      investorTrust: 5,
+      supplyChainExposure: 0
     },
     stageProgress: {
       currentStage: GameStage.Garage,
@@ -127,8 +146,13 @@ export const createInitialGameState = (
 let gameState: GameState | null = null;
 
 // Game state methods
-export const initGame = (founderName: string, companyName: string, initialCash: number = 30000): GameState => {
-  gameState = createInitialGameState(founderName, companyName, initialCash);
+export const initGame = (
+  founderName: string,
+  companyName: string,
+  businessType: BusinessType,
+  initialCash: number = 30000
+): GameState => {
+  gameState = createInitialGameState(founderName, companyName, businessType, initialCash);
   return gameState;
 };
 
