@@ -39,7 +39,7 @@ sandhill-road
 ### Local Installation
 
 ```bash
-git clone https://github.com/yourusername/sandhill-road.git
+git clone https://github.com/bomatson/sandhill-road.git
 cd sandhill-road
 npm install
 npm start
@@ -178,13 +178,13 @@ Contributions are welcome! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for 
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/yourusername/sandhill-road/tags).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/bomatson/sandhill-road/tags).
 
 ## Authors
 
-* **Your Name** - *Initial work* - [yourusername](https://github.com/yourusername)
+* **Bobby Matson** - *Initial work* - [bomatson](https://github.com/bomatson)
 
-See also the list of [contributors](https://github.com/yourusername/sandhill-road/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/bomatson/sandhill-road/contributors) who participated in this project.
 
 ## License
 
@@ -193,4 +193,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - Inspired by Oregon Trail and the incredible adventures of Nick Julian and Bobby
-- Built with Node.js, TypeScript, and Inquirer 
+- Built with Node.js, TypeScript, and Inquirer  

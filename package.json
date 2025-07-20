@@ -27,9 +27,9 @@
     "silicon-valley"
   ],
   "author": {
-    "name": "Your Name",
-    "email": "your.email@example.com",
-    "url": "https://github.com/yourusername"
+    "name": "Bobby Matson",
+    "email": "bobby.matson@gmail.com",
+    "url": "https://github.com/bomatson"
   },
   "license": "MIT",
   "devDependencies": {
@@ -47,12 +47,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/sandhill-road.git"
+    "url": "git+https://github.com/bomatson/sandhill-road.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/sandhill-road/issues"
+    "url": "https://github.com/bomatson/sandhill-road/issues"
   },
-  "homepage": "https://github.com/yourusername/sandhill-road#readme",
+  "homepage": "https://github.com/bomatson/sandhill-road#readme",
   "engines": {
     "node": ">=16.0.0"
   },

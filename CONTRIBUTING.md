@@ -10,12 +10,12 @@ By participating in this project, you agree to maintain a respectful and inclusi
 
 ### Reporting Bugs
 
-- Check if the bug has already been reported in [Issues](https://github.com/yourusername/sandhill-road/issues)
+- Check if the bug has already been reported in [Issues](https://github.com/bomatson/sandhill-road/issues)
 - If not, create a new issue with a descriptive title and detailed steps to reproduce
 
 ### Suggesting Features
 
-- Check if the feature has already been suggested in [Issues](https://github.com/yourusername/sandhill-road/issues)
+- Check if the feature has already been suggested in [Issues](https://github.com/bomatson/sandhill-road/issues)
 - If not, create a new issue with a descriptive title and detailed description of the feature
 
 ### Adding New Events
@@ -79,7 +79,7 @@ The easiest way to contribute is by adding new narrative events to the game:
 
 ## Development Environment
 
-1. Clone the repository: `git clone https://github.com/yourusername/sandhill-road.git`
+1. Clone the repository: `git clone https://github.com/bomatson/sandhill-road.git`
 2. Install dependencies: `npm install`
 3. Run in development mode: `npm run dev`
 
@@ -93,4 +93,4 @@ The easiest way to contribute is by adding new narrative events to the game:
 
 ## Thank You!
 
-Your contributions help make this project better. Thank you for your time and effort! 
+Your contributions help make this project better. Thank you for your time and effort!  
